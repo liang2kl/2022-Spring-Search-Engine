@@ -1,0 +1,6 @@
+config/
+dataset/
+.venv/
+.DS_Store
+env.local.json
+*.sqlite

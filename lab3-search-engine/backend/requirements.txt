@@ -1,0 +1,6 @@
+opencv-contrib-python
+flask
+flask-cors
+sqlalchemy
+redis
+sklearn

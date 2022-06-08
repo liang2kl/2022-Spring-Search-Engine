@@ -1,0 +1,212 @@
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\usepackage{enumitem}
+\usepackage{multirow}
+
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
+\begin{document}
+\title{搜索引擎性能评价实验报告}
+\author{梁业升 2019010547（计03）}
+
+\maketitle
+
+\section{查询样例集合构建}
+
+查询词构建如下：
+
+\begin{description}[labelwidth=120pt,leftmargin=!]
+  \item[Apple官网]（导航，9）苹果任一官方网站，包括iCloud等服务
+  \item[清华大学主页]（导航，5）清华大学主页
+  \item[俄乌战争]（信息，9）对近期俄乌战争的介绍或报道 
+  \item[冬残奥会赛程]（信息，5）冬残奥会全部/最近赛程
+  \item[Docker使用]（信息，4）对Docker使用方法（配置、运行等）的介绍 
+  \item[海外云服务器推荐]（信息，2） 对海外服务器的优缺点介绍（不能是国内的）
+  \item[历年欧冠冠军]（信息，2）对历年欧冠冠军的列举
+  \item[如何海淘]（事务，9）海淘准备、流程、注意事项等   
+  \item[如何做番茄炒蛋]（事务，6）番茄炒蛋的食材准备、烹饪方法
+  \item[如何评价搜索引擎性能]（事务，0） 搜索引擎性能评价标准、过程等
+\end{description}
+
+\section{构建Pooling及相关性标注}
+
+选择Google（\texttt{google.com}）、百度（\texttt{baidu.com}）进行评价。标注时遵循以下规则：
+
+\begin{enumerate}
+  \item 标注为广告的条目不计算在内
+  \item 以特殊卡片形式呈现的条目计算在内
+  \item 新闻/视频合集不计算在内（单条新闻/视频除外）
+\end{enumerate}
+
+
+\subsection{Apple官网}
+
+\begin{center}
+  \begin{tabular}{ |c|c|c| }
+    \hline
+    搜索引擎 & 结果 & 相关性 \\ \hline
+    \multirow{10}{*}{Google}  & Apple (中国大陆) - 官方网站 & 1 \\ \cline{2-3}
+    & Apple & 1 \\ \cline{2-3}
+    & 苹果公司官网(www.apple.com)-Apple官方网站 & 1 \\ \cline{2-3}
+    &【苹果】苹果官网商城\_Apple是什么牌子 - 品牌 & 0 \\ \cline{2-3}
+    & 苹果iPhone手机官网 & 0 \\ \cline{2-3}
+    & Apple iCloud & 1 \\ \cline{2-3}
+    & Apple苹果中国官网优惠券与返利 & 0 \\ \cline{2-3}
+    & 苹果官网大改版，新品发布\_Apple & 0 \\ \cline{2-3}
+    & Welcome to NYC.gov | City of New York & 0 \\ \cline{2-3}
+    & Apple产品苏宁自营旗舰店 & 0 \\ \cline{2-3}
+    \hline\hline
+    \multirow{10}{*}{百度}  & Apple (中国大陆) - 官方网站 & 1 \\ \cline{2-3}
+    & iPod touch - Apple (中国大陆) & 1 \\ \cline{2-3}
+    & Apple & 1 \\ \cline{2-3}
+    & 管理您的 Apple ID & 1 \\ \cline{2-3}
+    & iPhone - Apple (中国大陆) & 1 \\ \cline{2-3}
+    & 官方Apple 支持 & 1 \\ \cline{2-3}
+    & Apple Developer & 1 \\ \cline{2-3}
+    & Apple Beta 版软件计划 & 1 \\ \cline{2-3}
+    & Apple中文网 & 0 \\ \cline{2-3}
+    & 恢复您的 Apple ID - Apple (CN) & 1 \\ \cline{2-3}
+    \hline
+  \end{tabular}
+\end{center}
+\pagebreak
+
+\subsection{冬残奥会赛程}
+
+\begin{center}
+  \begin{tabular}{ |c|c|c| }
+    \hline
+    搜索引擎 & 结果 & 相关性 \\ \hline
+    \multirow{10}{*}{Google}  & Beijing 2022 Paralympics（卡片） & 1 \\ \cline{2-3}
+    & 北京冬奥赛程-北京2022年冬奥会和冬残奥会组织委员会网站 & 1 \\ \cline{2-3}
+    & 赛程近半北京冬残奥会获高度认可 - 中国政府网 & 0 \\ \cline{2-3}
+    & 2022年冬季残疾人奥林匹克运动会 - 维基百科 & 0 \\ \cline{2-3}
+    & 赛程近半，北京冬残奥会获得各相关方高度认可 - 环球网 & 0 \\ \cline{2-3}
+    & 冬奥会每日赛程- 2月20日 - Olympics & 1 \\ \cline{2-3}
+    & 总有一种精神催人奋进——北京冬残奥会中国代表团半程综述 & 0 \\ \cline{2-3}
+    & 新标杆、不可思议！北京冬残奥赛程过半屡获盛赞 - 新华日报 & 0 \\ \cline{2-3}
+    & 赛程近半北京冬残奥会获高度认可 - 锦绣天府 & 0 \\ \cline{2-3}
+    & 赛程近半北京冬残奥会获高度认可 - 兰州新闻网 & 0 \\ \cline{2-3}
+
+    \hline\hline
+    \multirow{10}{*}{百度}  & 北京冬残奥会（卡片） & 1 \\ \cline{2-3}
+    & 2022年北京冬季残疾人奥林匹克运动会-百度百科 & 1 \\ \cline{2-3}
+    & 赛事一览|北京冬残奥会迎来第5比赛日 & 1 \\ \cline{2-3}
+    & 北京冬奥赛程-北京2022年冬奥会和冬残奥会组织委员会网站 & 1 \\ \cline{2-3}
+    & 北京2022冬残奥会赛程表(建议收藏) & 1 \\ \cline{2-3}
+    & 北京冬残奥会赛程表来了! & 1 \\ \cline{2-3}
+    & 2022冬残奥运会赛程表(中国)-哔哩哔哩 & 1 \\ \cline{2-3}
+    & 北京冬残奥会赛程表出炉\_北京冬残奥会赛程表出炉\_sohu\_俄... & 1 \\ \cline{2-3}
+    & 赛事一览|北京冬残奥会3月9日看点\_\_财经头条 & 1 \\ \cline{2-3}
+    & 北京冬残奥会赛程表,赶紧收藏! & 1 \\ \cline{2-3}
+    \hline
+  \end{tabular}
+\end{center}
+\pagebreak
+
+\subsection{如何海淘}
+
+\begin{center}
+  \begin{tabular}{ |c|c|c| }
+    \hline
+    搜索引擎 & 结果 & 相关性 \\ \hline
+    \multirow{10}{*}{Google}  & 详尽快速超全面的海淘终极教程海淘攻略 & 1 \\ \cline{2-3}
+    & 怎样海淘？ - 知乎 & 1 \\ \cline{2-3}
+    & 怎么海淘？看这里：海淘攻略全集，详细的海淘教程，一步步 ... & 1 \\ \cline{2-3}
+    & 新手海淘指南篇新手海淘教程2021年新手海淘入门全攻略 & 1 \\ \cline{2-3}
+    & 海淘攻略:教你如何海淘海淘详细操作流程 & 1 \\ \cline{2-3}
+    & 新手入门之最全面的海淘流程讲解 - 拔草哦 & 1 \\ \cline{2-3}
+    & 海淘新手必看——2020最新美国亚马逊海淘攻略！含海淘转运 ... & 1 \\ \cline{2-3}
+    & 如何海淘| 四种集运方式| 在海外怎么淘宝？| 转运Tips - YouTube & 1 \\ \cline{2-3}
+    & 那些值得海淘的好东东——德淘爱他美奶粉手把手攻略 & 0 \\ \cline{2-3}
+    & 【海淘教程】海淘教程详解\_海淘下单攻略 - 铭宣海淘 & 0 \\ \cline{2-3}
+
+    \hline\hline
+    \multirow{10}{*}{百度}  & 如何进行海淘,海淘操作流程 & 1 \\ \cline{2-3}
+    & 怎样海淘? - 知乎 & 1 \\ \cline{2-3}
+    & 怎么海淘? - 知乎 & 1 \\ \cline{2-3}
+    & 如何海淘? - 知乎 & 1 \\ \cline{2-3}
+    & 海淘教程|全面细致的海淘攻略\_新手如何海淘\_怎么海淘转运\_... & 1 \\ \cline{2-3}
+    & 如何海淘? - 百度知道 & 1 \\ \cline{2-3}
+    & 日本海淘攻略大全,全面了解如何海淘?\_万表网 & 1 \\ \cline{2-3}
+    & 【海淘教程】海淘教程学习\_海淘攻略分享\_海淘购物指南-爱... & 1 \\ \cline{2-3}
+    & 亚马逊海淘-英国代购-海淘转运-值购优品 & 0 \\ \cline{2-3}
+    & 如何正确海淘 - 简书 & 1 \\ \cline{2-3}
+    \hline
+  \end{tabular}
+\end{center}
+
+\section{评价指标计算}
+
+\begin{center}
+  \begin{tabular}{ |c|c|c|c|c|c|c| }
+    \hline
+    搜索引擎 & 查询样例 & 相关性序列 & AP & P@10 & RR & success@10 \\ \hline
+    \multirow{10}{*}{Google}  & Apple 官网 & 1110010000 & 0.917 & 0.4 & 1 & 1 \\ \cline{2-7}
+    & 清华大学主页 & 1101000000 & 0.917 & 0.3 & 1 & 1 \\ \cline{2-7}
+    & 俄乌战争 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & 冬残奥会赛程 & 1100010000 & 0.833 & 0.3 & 1 & 1 \\ \cline{2-7}
+    & Docker 使用 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & 海外云服务器推荐 & 1111011111 & 0.928 & 0.9 & 1 & 1 \\ \cline{2-7}
+    & 历年欧冠冠军 & 1111111001 & 0.975 & 0.8 & 1 & 1 \\ \cline{2-7}
+    & 如何做番茄炒蛋 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & 如何海淘 & 1111111100 & 1.00 & 0.8 & 1 & 1 \\ \cline{2-7}
+    & 如何评价搜索引擎性能 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+
+    \hline\hline
+    \multirow{10}{*}{百度}  & Apple 官网 & 1111111101 & 0.989 & 0.9 & 1 & 1 \\ \cline{2-7}
+    & 清华大学主页 & 1110000100 & 0.875 & 0.3 & 1 & 1 \\ \cline{2-7}
+    & 俄乌战争 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & 冬残奥会赛程 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & Docker 使用 & 1101011111 & 0.807 & 0.8 & 1 & 1 \\ \cline{2-7}
+    & 海外云服务器推荐 & 1110100101 & 0.837 & 0.6 & 1 & 1 \\ \cline{2-7}
+    & 历年欧冠冠军 & 1111110111 & 0.963 & 0.9 & 1 & 1 \\ \cline{2-7}
+    & 如何做番茄炒蛋 & 1111111111 & 1.00 & 1.0 & 1 & 1 \\ \cline{2-7}
+    & 如何海淘 & 1111111101 & 0.989 & 0.9 & 1 & 1 \\ \cline{2-7}
+    & 如何评价搜索引擎性能 & 1101001110 & 0.769 & 0.6 & 1 & 1 \\ \cline{2-7}
+    \hline
+  \end{tabular}
+\end{center}
+
+\section{结果列表评价}
+
+两个搜索引擎性能评价指标的平均值如下：
+
+\begin{center}
+  \begin{tabular}{ |c|c|c|c|c|c|c| }
+    \hline
+    搜索引擎 & AP & P@10 & RR & success@10 \\ \hline
+    Google & 0.957 & 0.75 & 1 & 1 \\ \hline
+    百度 & 0.923 & 0.8 & 1 & 1 \\ \hline
+  \end{tabular}
+\end{center}
+
+根据以上数据，得到如下结论：
+
+\begin{itemize}
+  \item Google的AP略高于百度，说明其排名靠前的条目准确度较高。
+  \item 百度的P@10略高于Google，说明其无效条目的比例较少。
+  \item Google和百度的RR和success@10均为1，说明其基本上能够满足用户的搜索需求。
+\end{itemize}
+
+可以看出，百度与Google的中文搜索性能基本接近，均能满足一般的搜索需求，这说明如今主流的搜索引擎
+的性能已经比较理想了。但是，在标注过程中二者仍显示出某些方面的劣势：
+
+\begin{itemize}
+  \item \textbf{Google对中文搜索的语义理解上相比百度有所不足。}如查询“冬残奥会赛程”时“赛程近半北京冬残奥会获高度认可”这一
+        与关键词匹配但与意图无关的条目多次出现，而百度未出现此情况。
+  \item \textbf{百度在学术、计算机技术等方面与Google相比，搜索准确度较低、来源范围较小、专业性较弱。}百度基本上只有国内大型站点相关文章的索引，对于
+        一些相对冷门但专业性更高的站点索引有所不足。
+  \item \textbf{仍有索引错误的情况。}如Google在查询“Apple官网”时出现了“Welcome to NYC.gov”这一毫不相关的条目。
+\end{itemize}
+
+另外，不同类型的查询对查询效果的影响较大：
+
+\begin{itemize}
+  \item \textbf{导航类索引排名较后的条目普遍偏离查询目的。}比如，对于“清华大学主页”的查询，两个搜索引擎均只有30\%的结果与导航目的一致。
+  \item \textbf{查询质量与查询热门程度相关。}热门的查询普遍质量较高，这可能是由于热门查询索引的条目更多，更容易筛选出高质量的结果。
+\end{itemize}
+
+总的来说，目前的主流搜索引擎能够比较好地处理大部分的搜索请求，但在很多方面仍有很大的改进空间。
+
+\end{document}

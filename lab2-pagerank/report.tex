@@ -1,0 +1,128 @@
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{float}
+
+\setlength{\parskip}{6pt}
+
+\pagestyle{headings}
+
+\begin{document}
+\title{实验二：PageRank算法实现}
+\author{梁业升 2019010547（计03）}
+
+\maketitle
+
+\section{实验结果}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = \textwidth]{assets/oj.png}
+    \caption{OJ测试结果}
+\end{figure}
+
+\section{实验报告}
+
+\subsection{请分析在迭代过程中，为什么PageRank值的和始终为1}
+
+第 $k(k\ge 1)$ 次迭代中，出度为 0 的节点的 PageRank 值之和为
+
+\begin{equation*}
+    S^{(k)}=\sum_{\{j|j\Rightarrow i\}=\emptyset}\texttt{PR}[i]
+\end{equation*}
+
+节点 $i$ 的 PageRank 值为
+
+\begin{equation*}
+    \texttt{PR}[i]^{(k)}=\frac{\alpha}{N}+(1-\alpha)
+        \Big [\sum_{j\Rightarrow i}\frac{\texttt{PR}[j]^{(k-1)}}{\texttt{out\_degree}[j]}
+     + \frac{S^{(k)}}{N} \Big]
+\end{equation*}
+
+PageRank的和为
+
+\begin{equation*}
+    \begin{split}
+        \sum_{i\in V(G)} \texttt{PR}[i]^{(k)} & = N\cdot\frac{\alpha}{N}
+            + (1-\alpha) \Big[\sum_{(j,i)\in E(G)}\frac{\texttt{PR}[j]^{(k-1)}}{\texttt{out\_degree}[j]}
+            + \sum_{\{i|j\Rightarrow i\}=\emptyset}\texttt{PR}[j]^{(k-1)} \Big]
+        \\ & = \alpha + (1-\alpha)\sum_{\{i|j\Rightarrow i\}\neq\emptyset}\texttt{PR}[j]^{(k-1)}
+            + (1-\alpha)\sum_{\{i|j\Rightarrow i\}=\emptyset}\texttt{PR}[j]^{(k-1)}
+        \\ & = \alpha + (1-\alpha) \sum_{i\in V(G)} \texttt{PR}[i]^{(k-1)}
+    \end{split}
+\end{equation*}
+
+$k = 0$ 时，
+
+\begin{equation*}
+    \sum_{i\in V(G)} \texttt{PR}[i]^{(0)} = 1
+\end{equation*}
+
+由数学归纳法
+
+\begin{equation*}
+    \sum_{i\in V(G)} \texttt{PR}[i]^{(k)} = \alpha + (1-\alpha) = 1
+\end{equation*}
+
+\subsection{语料入链接数和出链接数分布情况分布}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{plots/in.png}
+    \caption{入链接数分布}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{plots/out.png}
+    \caption{出链接数分布}
+\end{figure}    
+
+大多数的网页入链接和出链接数均较少，具有较高入链接或出链接的网页较少。相较而言，入链接数较少的网页
+的比例比出链接数较少的网页的比例多，而最大出链接数量少于最大入链接数量。
+
+\subsection{PageRank结果分布}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{plots/pagerank.png}
+    \caption{PageRank结果分布}
+\end{figure}    
+
+大多数的PageRank均较低，具有较大PageRank的网页较少。
+
+\subsection{PageRank得分与入链接的关联分析}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \textwidth]{plots/in-pr.png}
+    \caption{PageRank得分与入链接的关系}
+\end{figure}    
+
+由上图可见，PageRank得分与入链接数量大致成正相关，且入链接越多，相关性越强。
+
+\subsection{PageRank得分与相应条目语义内容分析}
+
+PageRank 排名前 3 的条目为：
+
+\begin{enumerate}
+    \item 箭头：$1.87\times 10^{-2}$
+    \item $\leftarrow$：$1.59\times 10^{-2}$
+    \item 维基数据：$3.1\times 10^{-3}$
+\end{enumerate}
+
+PageRank 排名后 2 的条目为：
+
+\begin{enumerate}
+    \item 李东濬：$1.586\times 10^{-7}$
+    \item 金炯：$1.586\times 10^{-7}$
+\end{enumerate}
+
+可见，PageRank较高的条目为搜索或引用的高频词，较低的条目大多为如部分姓名的冷门词。
+
+\end{document}
